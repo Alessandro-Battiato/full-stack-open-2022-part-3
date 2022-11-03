@@ -1,1 +1,1 @@
-web: npm startPersons
+web: npm run startPersons
