@@ -7,7 +7,7 @@
     "startNotes": "node index.js",
     "devNotes": "nodemon index.js",
     "startPersons": "node Phonebook.js",
-    "deploy": "git push heroku main",
+    "deploy": "git push heroku master",
     "devPersons": "nodemon Phonebook.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

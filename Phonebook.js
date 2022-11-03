@@ -35,7 +35,11 @@ let persons = [
   },
 ];
 
-app.get("/api/info/:id", (request, response) => {
+app.get("/api/persons", (request, response) => {
+  response.json(persons);
+});
+
+app.get("/api/persons/:id", (request, response) => {
   const id = Number(request.params.id);
   const person = persons.find((person) => person.id === id);
   if (person) {
@@ -45,7 +49,7 @@ app.get("/api/info/:id", (request, response) => {
   }
 });
 
-app.post("/api/info", (request, response) => {
+app.post("/api/persons", (request, response) => {
   const body = request.body;
   if (!body.name || !body.number) {
     return response.status(400).json({
@@ -66,7 +70,7 @@ app.post("/api/info", (request, response) => {
   response.json(person);
 });
 
-app.delete("/api/info/:id", (request, response) => {
+app.delete("/api/persons/:id", (request, response) => {
   const id = Number(request.params.id);
   persons = persons.filter((person) => person.id !== id);
   response.status(204).end();
@@ -83,7 +87,7 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms :body")
 );
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
