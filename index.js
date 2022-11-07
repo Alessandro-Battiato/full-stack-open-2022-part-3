@@ -50,11 +50,6 @@ app.post("/api/notes", (request, response) => {
   response.json(note);
 });
 
-/*
-app.get("/", (request, response) => {
-  response.send("<h1>Hello World!</h1>");
-});
-*/
 console.log("attempt");
 
 app.get("/notes", (request, response) => {
