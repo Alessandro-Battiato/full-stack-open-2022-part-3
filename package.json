@@ -9,7 +9,8 @@
     "startPersons": "node Phonebook.js",
     "deploy": "git push heroku master",
     "devPersons": "nodemon Phonebook.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "author": "Alessandro Salvatore Battiato",
   "license": "ISC",
