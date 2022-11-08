@@ -40,8 +40,8 @@ const personSchema = new mongoose.Schema({
     required: true,
   },
   number: {
-    type: Number,
-    minLength: 3,
+    type: String,
+    minLength: 8,
     required: true,
   },
 });

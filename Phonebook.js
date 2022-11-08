@@ -67,7 +67,22 @@ app.post("/api/persons", (request, response, next) => {
     .then((savedPerson) => {
       response.json(savedPerson);
     })
-    .catch((error) => next(error));
+    .catch((error) => {
+      if (error.name === "ValidatorError" || error.name === "ValidationError") {
+        const objKeys = Object.keys(error.errors);
+        const errMessages = objKeys.map((e) => {
+          const err = error.errors[e];
+
+          if (err.kind === "minlength") {
+            return response
+              .status(400)
+              .send({ error: "number must be at least 8 characters long" });
+          } else if (err.kind === "unique") {
+            return response.status(400).send({ error: "name already exists" });
+          }
+        });
+      }
+    });
 });
 
 app.put("/api/persons/:id", (request, response, next) => {
